@@ -349,26 +349,57 @@
     </p><br>
     <style>
       .taief-table {
-  width: 60%;
+  width: 100%;
   border-collapse: collapse;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
+  margin-top: 2rem;
+  background: rgba(0, 255, 255, 0.03);
+  border-radius: 12px;
   overflow: hidden;
-  color: #00ffe1;
-  box-shadow: 0 0 10px #0ff;
+  color: #e0f7fa;
+  font-size: 0.95rem;
+  box-shadow: 0 0 15px #00ffe1;
+  animation: borderGlow 3s infinite ease-in-out;
 }
 
-.taief-table th,
-.taief-table td {
+.taief-table thead {
+  background-color: rgba(0, 255, 225, 0.08);
+}
+
+.taief-table th, .taief-table td {
   padding: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   text-align: left;
-  animation: glow 2s ease-in-out infinite;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 4px #0ff;
+  transition: background 0.3s, transform 0.3s;
 }
 
 .taief-table th {
-  background-color: rgba(0, 255, 225, 0.1);
+  color: #00ffe1;
+  font-weight: 600;
+  text-transform: uppercase;
 }
+
+.taief-table tr:hover {
+  background: rgba(0, 255, 255, 0.05);
+  transform: scale(1.01);
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px #00ffe1, 0 0 20px #00ffe1;
+  }
+  50% {
+    box-shadow: 0 0 25px #00ffe1, 0 0 35px #00ffe1;
+  }
+}
+
+@media (max-width: 768px) {
+  .taief-table th, .taief-table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+      
   </style>
 </head>
   <h1>My Activities & Achievements</h1>
