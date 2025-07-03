@@ -12,9 +12,10 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="NeoTech - Future of Innovation" />
-  <title>NeoTech | Future of Innovation</title>
+  <meta name="description" content="TaiefTech - Future of Innovation" />
+  <title>TaiefTech | Future of Innovation</title>
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
@@ -25,7 +26,7 @@
     }
     body {
    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap');
-   
+
       background: linear-gradient(to bottom right, #000, #2d0263);
       color: white;
       overflow-x: hidden;
@@ -87,6 +88,25 @@
     header button:hover {
       background: #ff00c8;
     }
+  /* Marquee Section */
+        .marquee {
+            background: #0b0d2b;
+            padding: 1rem;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee span {
+            display: inline-block;
+            font-size: 1.2rem;
+            color: #00f5d4;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(50%); }
+            100% { transform: translateX(-100%); }
+        }
     section {
       padding: 5rem 2rem;
       max-width: 1200px;
@@ -104,13 +124,15 @@
       gap: 2rem;
     }
     .card {
-      background: rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.15);
       padding: 2rem;
       border-radius: 1rem;
       transition: transform 0.3s;
     }
-    .card:hover {
-      transform: scale(1.05);
+   .card:hover {
+            transform: translateY(-15px) rotate(2deg);
+            border: 2px solid #00f5d4;
+            box-shadow: 0 0 40px rgba(0, 245, 212, 0.7);
     }
     .card i {
       font-size: 2rem;
@@ -160,12 +182,15 @@
     }
 #particles-js {
   position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+  width: 100vw;
+  height: 100vh;
   top: 0;
   left: 0;
+  background: radial-gradient(circle at center, #0d0221 0%, #0a0016 100%);
+  z-index: -1;
 }
+
+
 .join-section {
   padding: 80px 20px;
   text-align: center;
@@ -226,6 +251,39 @@
       50% { transform: translateY(+15px); }
       100% { transform: translateY(0); }
  }
+.wrapper {
+      position: relative;
+      display: inline-block;
+      font-size: 1em;
+      letter-spacing: 2px;
+    }
+
+    .char {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, #00f0ff, #ff00d4);
+      box-shadow: 0 0 20px #00f0ff;
+      animation: moveBar 2.6s linear forwards;
+      z-index: 2;
+    }
+
+    @keyframes moveBar {
+      from {
+        left: 0%;
+      }
+      to {
+        left: 100%;
+      }
+    }
+
 
   </style>
 </head>
@@ -233,7 +291,39 @@
 <div id="particles-js"></div>
 
   <nav>
-    <h1>NeoTech</h1>
+    <h1><div class="wrapper" id="textWrapper">
+    <div class="bar" id="bar"></div>
+  </div>
+
+  <script>
+    const text = "TAIEF";
+    const wrapper = document.getElementById("textWrapper");
+
+    // Create individual spans for each character
+    for (let i = 0; i < text.length; i++) {
+      const span = document.createElement("span");
+      span.textContent = text[i];
+      span.classList.add("char");
+      wrapper.appendChild(span);
+    }
+
+    const bar = document.getElementById("bar");
+    const chars = document.querySelectorAll(".char");
+
+    // Reveal letters as the bar passes over them
+    function revealLetters() {
+      const totalDuration = 3200; // ms
+      const interval = totalDuration / chars.length;
+
+      chars.forEach((char, index) => {
+        setTimeout(() => {
+          char.style.opacity = 1;
+        }, index * interval);
+      });
+    }
+
+    revealLetters();
+  </script></h1>
     <div class="links">
       <table>
       <tr><td><a href="#about"><b>About</b></a></td>
@@ -243,18 +333,23 @@
       </table>
     </div>
   </nav>
+ 
   <header>
     <div>
       <h1>NeoTech- Problem Solvers Of JUSC</h1>
       <p>AI-powered. Human-driven. Limitless possibilities.</p>
-      <a href="https://artofproblemsolving.com/community/c13_contests"><button>Explore The Problems</button></a>
+      <a href="https://stemcontests.pages.dev"><button>Join the Contests</button></a>
     </div>
   </header>
   <section id="about">
     <h2 class="section-title">Our Mission</h2>
     <p style="text-align: center; max-width: 800px; margin: auto; color: #ccc;">
-      NeoTech envisions a world where education, innovation, and AI converge to empower every mind with futuristic tools and a boundless playground for ideas.
-    </p>
+    I dream of a world where education, innovation, and AI converge to empower every mind with futuristic tools and a boundless playground for ideas.
+    </p><br>
+    <!-- Marquee -->
+    <div class="marquee">
+      <span>🌟 Note: TAIEF is a new Mobile Web developer! I love to solve Olympiad problems. Check out my FB for more! 🌟 Join the latest weekly contests now to sharpen your mind! 🌟</span> 
+    </div>
   </section>
   <section id="features">
     <h2 class="section-title">Core Features</h2>
@@ -262,18 +357,23 @@
      <a href="https://1trust.pages.dev" class="card" style="text-decoration: none; color: inherit;">
   <i class="fas fa-rocket"></i>
   <h3>OneTrust</h3>
-  <p>Smarter, faster, and built to empower.</p>
+  <p>My Another website; Religious, smarter, faster, and built to empower.</p>
 </a>
 
       <a href="https://numbercombinations.pages.dev" class="card" style="text-decoration: none; color: inherit;">
   <i class="fas fa-rocket"></i>
   <h3>Number World</h3>
-  <p>Dive into the world of Number Theory and Combinatorics </p>
+  <p>I love NT and Combi! Add to home. U will love it 😉 </p>
 </a>
 <a href="https://wolframalpha.com" class="card" style="text-decoration: none; color: inherit;">
   <i class="fas fa-rocket"></i>
   <h3>X World</h3>
   <p>Wolfram Alpha: knowledge meets computational intelligence instantly.
+</p>
+<a href="https://artofproblemsolving.com/community/c13_contests" class="card" style="text-decoration: none; color: inherit;">
+  <i class="fas fa-rocket"></i>
+  <h3>Olympiad Problems</h3>
+  <p>Explore the Olympiad problems from the world-class competitions.
 </p>
 </a>
 
@@ -305,36 +405,53 @@
 
   <footer>
     <div>
-      <a href="https://docs.google.com/document/d/1hq9NHz84I_bxXE52I-QM065YBr4TNzcf51y0wwrgcR8/edit?usp=drivesdk">Privacy</a>|
-      <a href="https://docs.google.com/document/d/1hRJEVsSEfKZ4Qpff_2RK23z8aFh9nCI5PQbx-RvkbLg/edit?usp=drivesdk">Terms</a>|
+      <a href="https://www.facebook.com/taief.khan.112439">My Facebook</a>|
+      <a href="https://docs.google.com/document/d/1hRJEVsSEfKZ4Qpff_2RK23z8aFh9nCI5PQbx-RvkbLg/edit?usp=drivesdk">Privacy and Terms</a>|
       <a href="mailto:greentamg@gmail.com">Contact</a>
     </div>
-    <p>© 2025 NeoTech. All rights reserved. -Taief</p>
+    <p>© 2025 Taief Khan. All rights reserved.</p>
   </footer>
 <script>
   particlesJS("particles-js", {
-    "particles": {
-      "number": { "value": 80 },
-      "color": { "value": "#00faff" },
-      "shape": { "type": "circle" },
-      "opacity": { "value": 0.5 },
-      "size": { "value": 3 },
-      "line_linked": {
-        "enable": true,
-        "distance": 150,
-        "color": "#00faff",
-        "opacity": 0.4,
-        "width": 1
+    particles: {
+      number: { value: 80 },
+      color: { value: "#00faff" },
+      shape: { type: "square" },
+      opacity: { value: 0.5 },
+      size: { value: 10 },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: "#00faff",
+        opacity: 0.4,
+        width: 1
       },
-      "move": { "enable": true, "speed": 2 }
+      move: {
+        enable: true,
+        speed: 2,
+        direction: "none",
+        random: false,
+        straight: false,
+        bounce: true
+      }
     },
-    "interactivity": {
-      "detect_on": "canvas",
-      "events": { "onhover": { "enable": true, "mode": "repulse" } }
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: { enable: true, mode: "repulse" },
+        onclick: { enable: true, mode: "push" }
+      },
+      modes: {
+        repulse: { distance: 100 },
+        push: { particles_nb: 4 }
+      }
     },
-    "retina_detect": true
+    retina_detect: true
   });
 </script>
+
+
+
 <script>
   const form = document.getElementById('signup-form');
   const nameInput = document.getElementById('name');
@@ -358,4 +475,5 @@
 </script>
 
 </body>
-</html>
+  </html>
+  
