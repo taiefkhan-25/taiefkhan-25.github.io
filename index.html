@@ -31,6 +31,19 @@
       color: white;
       overflow-x: hidden;
     }
+  .typewriter {
+      font-family: monospace;
+      font-size: 0.5em;
+      color: #00ffe7;
+      display: inline-block;
+    }
+
+    .typewriter::after {
+      content: '|';
+      color: #00ffe7;
+      
+    }
+
     nav {
       position: fixed;
       top: 0;
@@ -336,7 +349,38 @@
  
   <header>
     <div>
-      <h1>TAIEF-TECH:   I enjoy Problem solving</h1>
+      <h1>
+  <div class="typewriter" id="typewriter"></div>
+
+  <script>
+    const words = ["Hey! It's Taief", "A Problem Solver", "A DEVELOPER", "I'm TAIEF", "A Noob HACKER", "A Content CREATOR"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let typing = true;
+
+    const typewriterEl = document.getElementById("typewriter");
+
+    function type() {
+      const currentWord = words[wordIndex];
+      if (typing) {
+        typewriterEl.textContent = currentWord.slice(0, ++charIndex);
+        if (charIndex === currentWord.length) {
+          typing = false;
+          setTimeout(type, 1200); // pause before deleting
+          return;
+        }
+      } else {
+        typewriterEl.textContent = currentWord.slice(0, --charIndex);
+        if (charIndex === 0) {
+          typing = true;
+          wordIndex = (wordIndex + 1) % words.length;
+        }
+      }
+      setTimeout(type, typing ? 120 : 80);
+    }
+
+    type();
+  </script><br> TAIEF-TECH</h1>
       <p>AI-powered. Human-driven. Limitless possibilities.</p>
       <a href="https://stemcontests.pages.dev"><button>Join the Contests</button></a>
     </div>
@@ -474,7 +518,7 @@
         <td>Designed gamified math contests to empower rural youth for global competitions.</td>
       </tr>
     </tbody>
-  </table>
+  </table><br>
     <!-- Marquee -->
     <div class="marquee">
       <span>🌟 Note: TAIEF is a new Mobile Web developer! I love to solve Olympiad problems. Check out my FB for more! 🌟 Join the latest weekly contests now to sharpen your mind! 🌟</span> 
